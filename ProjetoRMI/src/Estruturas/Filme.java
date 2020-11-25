@@ -44,11 +44,14 @@ public class Filme implements Serializable
                 
                 line = br.readLine();
                 
-                String[] atores = line.split(" ");
-                
-                for(String ator : atores) 
+                if(line != null && line.length() > 0)
                 {
-                    filme.actorsID.add(Integer.parseInt(ator));
+                    String[] atores = line.split(" ");
+                    
+                    for(String ator : atores) 
+                    {
+                        filme.actorsID.add(Integer.parseInt(ator));
+                    }
                 }
                 
                 filmes.add(filme);

@@ -43,10 +43,10 @@ public class Filme
                 
                 line = br.readLine();
                 
-                String[] atores = line.split(" ");
-                
-                if(atores != null)
+                if(line != null && line.length() > 0)
                 {
+                    String[] atores = line.split(" ");
+                    
                     for(String ator : atores) 
                     {
                         filme.actorsID.add(Integer.parseInt(ator));
