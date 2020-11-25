@@ -31,8 +31,8 @@ public class Server implements ServerInterface
             
     private void OnServerStart()
     {
-        String PATH_FILMES = "C:/Users/Rodrigo Astros/Desktop/filmes.txt";
-        String PATH_ATORES = "C:/Users/Rodrigo Astros/Desktop/atores.txt";
+        String PATH_FILMES = "C:\\Users\\Rodrigo Astros\\Desktop\\RPC-RMI-and-Sockets\\filmes.txt";
+        String PATH_ATORES = "C:\\Users\\Rodrigo Astros\\Desktop\\RPC-RMI-and-Sockets\\atores.txt";
         
         System.out.println("[Server] Tentando abrir arquivo de filmes: " + PATH_FILMES);
         
@@ -168,8 +168,8 @@ public class Server implements ServerInterface
     
     private void Save()
     {
-        String PATH_FILMES = "C:/Users/Rodrigo Astros/Desktop/filmes.txt";
-        String PATH_ATORES = "C:/Users/Rodrigo Astros/Desktop/atores.txt";
+        String PATH_FILMES = "C:\\Users\\Rodrigo Astros\\Desktop\\RPC-RMI-and-Sockets\\filmes.txt";
+        String PATH_ATORES = "C:\\Users\\Rodrigo Astros\\Desktop\\RPC-RMI-and-Sockets\\atores.txt";
         
         try 
         {
