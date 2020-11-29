@@ -23,6 +23,18 @@ public class Filme implements Serializable
     public String type;
     public ArrayList actorsID = new ArrayList();
     
+    public Filme() { }
+    
+    public Filme(int ID, String name, String duration, String type, ArrayList actors) {
+        this.ID = ID;
+        this.name = name;
+        this.duration = duration;
+        this.type = type;
+        for (int i = 0; i < actors.size(); i++) {
+            this.actorsID.add(Integer.parseInt((String) actors.get(i)));
+        }
+    }
+    
     public static ArrayList OpenFilmes(String file)
     {
         ArrayList filmes = new ArrayList();

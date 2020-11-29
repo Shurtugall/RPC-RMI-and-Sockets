@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ServerSide;
 
 import Structures.Ator;
@@ -12,7 +7,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author denes
+ * @author denes, gabriel righi e rodrigo
  */
 public class ServerFiles {
     private ArrayList filmes = null;
@@ -130,6 +125,190 @@ public class ServerFiles {
     public ArrayList GetFilmes()
     {
         return this.filmes;
+    }
+    
+    public ArrayList GetAtoresByAttribute(String value, String attribute) 
+    {
+        ArrayList returnList = new ArrayList();
+        
+        if(attribute.equalsIgnoreCase("ID"))
+        {
+            for(Object obj : this.atores)
+            {
+                Ator ator = (Ator)obj;
+
+                if(ator.ID == Integer.parseInt(value))
+                {
+                    returnList.add(ator);
+                }
+            }
+            
+            return returnList;
+        }
+        else if(attribute.equalsIgnoreCase("NOME"))
+        {
+            for(Object obj : this.atores)
+            {
+                Ator ator = (Ator)obj;
+
+                if(ator.name.endsWith(value))
+                {
+                    returnList.add(ator);
+                }
+            }
+            
+            return returnList;
+        }
+        else if(attribute.equalsIgnoreCase("IDADE"))
+        {
+            for(Object obj : this.atores)
+            {
+                Ator ator = (Ator)obj;
+
+                if(ator.idade == Integer.parseInt(value))
+                {
+                    returnList.add(ator);
+                }
+            }
+            
+            return returnList;
+        }
+        else if(attribute.equalsIgnoreCase("BIOGRAFIA"))
+        {
+            for(Object obj : this.atores)
+            {
+                Ator ator = (Ator)obj;
+
+                if(ator.biografia.contains(value))
+                {
+                    returnList.add(ator);
+                }
+            }
+            
+            return returnList;
+        }
+        else if(attribute.equalsIgnoreCase("RELATIONAL"))
+        {
+            for(Object obj : this.atores)
+            {
+                Ator ator = (Ator)obj;
+
+                if(ator.ID == Integer.parseInt(value))
+                {
+                    for(Object obj2 : this.filmes) 
+                    {
+                        Filme filme = (Filme) obj2;
+                        
+                        for(Object obj3 : filme.actorsID)
+                        {
+                            if((int)obj3 == ator.ID)
+                            {
+                                returnList.add(filme);
+                            }
+                        } 
+                    }
+      
+                    break;
+                }
+            }
+            
+            return returnList;
+        }
+        
+        return null;
+    }
+
+    public ArrayList GetFilmesByAttribute(String value, String attribute)
+    {
+        ArrayList returnList = new ArrayList();
+        
+        if(attribute.equalsIgnoreCase("ID"))
+        {
+            for(Object obj : this.filmes)
+            {
+                Filme filme = (Filme)obj;
+
+                if(filme.ID == Integer.parseInt(value))
+                {
+                    returnList.add(filme);
+                }
+            }
+            
+            return returnList;
+        }
+        else if(attribute.equalsIgnoreCase("NOME"))
+        {
+            for(Object obj : this.filmes)
+            {
+                Filme filme = (Filme)obj;
+
+                if(filme.name.equalsIgnoreCase(value))
+                {
+                    returnList.add(filme);
+                }
+            }
+            
+            return returnList;
+        }
+        else if(attribute.equalsIgnoreCase("DURACAO"))
+        {
+            for(Object obj : this.filmes)
+            {
+                Filme filme = (Filme)obj;
+
+                if(filme.duration.equalsIgnoreCase(value))
+                {
+                    returnList.add(filme);
+                }
+            }
+            
+            return returnList;
+        }
+        else if(attribute.equalsIgnoreCase("TIPO"))
+        {
+            for(Object obj : this.filmes)
+            {
+                Filme filme = (Filme)obj;
+
+                if(filme.type.equalsIgnoreCase(value))
+                {
+                    returnList.add(filme);
+                }
+            }
+            
+            return returnList;
+        }
+        else if(attribute.equalsIgnoreCase("RELATIONAL"))
+        {
+            for(Object obj : this.filmes)
+            {
+                Filme filme = (Filme)obj;
+
+                if(filme.ID == Integer.parseInt(value))
+                {
+                    for(Object obj2 : filme.actorsID)
+                    {
+                        int id = (int)obj2;
+                        
+                        for(Object obj3 : this.atores)
+                        {
+                            Ator ator = (Ator)obj3;
+                            
+                            if(ator.ID == id)
+                            {
+                                returnList.add(ator);
+                            }
+                        }
+                    }
+                    
+                    break;
+                }
+            }
+            
+            return returnList;
+        }
+        
+        return null;
     }
     
     public boolean AddAtor(Ator ator)
